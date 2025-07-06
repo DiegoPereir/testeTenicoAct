@@ -1,5 +1,6 @@
-# 🐕 Testes Automatizados - API de Cães
+# Teste técnico da ACT
 
+![Allure Report](allure-result.png)
 [![CI Pipeline](https://github.com/{username}/apiTestTecnicoAct/workflows/CI%20Pipeline%20-%20Testes%20Funcionais/badge.svg)](https://github.com/{username}/apiTestTecnicoAct/actions)
 [![Java](https://img.shields.io/badge/Java-17-orange.svg)](https://openjdk.java.net/)
 [![Maven](https://img.shields.io/badge/Maven-3.6+-blue.svg)](https://maven.apache.org/)
@@ -147,6 +148,49 @@ mvn test -Dtest=DogApiBreedImagesTest
 mvn test -Dtest=DogApiBreedsListTest
 ```
 
+## 🛠️ Como Instalar o Allure
+
+Para visualizar os relatórios gerados localmente, é necessário instalar o Allure CLI em sua máquina.
+
+### **Windows**
+```bash
+choco install allure
+```
+> Requer o [Chocolatey](https://chocolatey.org/install) instalado.
+
+### **MacOS**
+```bash
+brew install allure
+```
+> Requer o [Homebrew](https://brew.sh/) instalado.
+
+### **Linux (Ubuntu/Debian)**
+```bash
+sudo apt-add-repository ppa:qameta/allure
+sudo apt-get update
+sudo apt-get install allure
+```
+
+### **Via NPM (Alternativa multiplataforma)**
+```bash
+npm install -g allure-commandline --save-dev
+```
+
+### **Verificando a Instalação**
+```bash
+allure --version
+```
+Se aparecer a versão do Allure, está tudo certo!
+
+### **Como Usar**
+Após instalar, você pode abrir o relatório com:
+```bash
+allure serve target/allure-results
+```
+ou
+```bash
+allure open target/allure-report
+```
 
 ## 📊 Relatórios
 
