@@ -1,7 +1,6 @@
 # Teste técnico da ACT
 
 ![Allure Report](allure-result.png)
-[![CI Pipeline](https://github.com/{username}/apiTestTecnicoAct/workflows/CI%20Pipeline%20-%20Testes%20Funcionais/badge.svg)](https://github.com/{username}/apiTestTecnicoAct/actions)
 [![Java](https://img.shields.io/badge/Java-17-orange.svg)](https://openjdk.java.net/)
 [![Maven](https://img.shields.io/badge/Maven-3.6+-blue.svg)](https://maven.apache.org/)
 [![JUnit](https://img.shields.io/badge/JUnit-5-green.svg)](https://junit.org/junit5/)
@@ -19,7 +18,6 @@ Projeto de testes automatizados para a API de Cães (Dog API) desenvolvido em Ja
 - [Executando os Testes](#executando-os-testes)
 - [Relatórios](#relatórios)
 - [Padrões de Desenvolvimento](#padrões-de-desenvolvimento)
-- [Contribuição](#contribuição)
 
 ## 🎯 Sobre o Projeto
 
