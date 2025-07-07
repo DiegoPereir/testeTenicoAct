@@ -9,29 +9,15 @@ import org.apache.commons.httpclient.HttpStatus;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @DisplayName("Testes da API de Imagens de Cães")
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class DogApiImageTest {
+public class DogApiImageTest extends ApiTestHooks {
 
-    private static final Logger logger = LoggerFactory.getLogger(DogApiImageTest.class);
     private static final String RANDOM_IMAGE_ENDPOINT = Config.get("endpoint.imagem.aleatoria");
 
-    @BeforeAll
-    public void setUp() {
-        logger.info("Iniciando suite de testes da API de imagens de cães");
-    }
-
-    @BeforeEach
-    public void setUpTest() {
-        logger.debug("Preparando novo teste");
-    }
-
-    @AfterEach
-    public void tearDownTest() {
-        logger.debug("Finalizando teste");
+    @Override
+    protected void setupTestSuite() {
+        logger.info("Configurando suite de testes da API de imagens de cães");
     }
 
     @Nested

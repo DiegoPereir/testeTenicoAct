@@ -11,23 +11,19 @@ import org.apache.commons.httpclient.HttpStatus;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.List;
 
 @DisplayName("Testes da API de Lista de Raças de Cães")
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class DogApiBreedsListTest {
+public class DogApiBreedsListTest extends ApiTestHooks {
 
-    private static final Logger logger = LoggerFactory.getLogger(DogApiBreedsListTest.class);
     private static final String ENDPOINT_LISTA_RACAS = Config.get("endpoint.lista.racas");
     private static List<String> RACAS_ESPERADAS;
     private static List<String> RACAS_POPULARES;
 
-    @BeforeAll
-    public void setUp() {
+    @Override
+    protected void setupTestSuite() {
         try {
             RACAS_ESPERADAS = FixtureUtils.getListFromFixture("racas.json", "racas_esperadas");
             RACAS_POPULARES = FixtureUtils.getListFromFixture("racas.json", "racas_populares");
@@ -36,18 +32,6 @@ public class DogApiBreedsListTest {
             logger.error("Erro ao carregar fixtures: {}", e.getMessage());
             throw new RuntimeException("Falha ao carregar fixtures", e);
         }
-
-        logger.info("Iniciando suite de testes da API de lista de raças");
-    }
-
-    @BeforeEach
-    public void setUpTest() {
-        logger.debug("Preparando novo teste de lista de raças");
-    }
-
-    @AfterEach
-    public void tearDownTest() {
-        logger.debug("Finalizando teste de lista de raças");
     }
 
     @Nested

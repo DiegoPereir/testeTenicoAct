@@ -11,42 +11,26 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.stream.Stream;
 
 @DisplayName("Testes da API de Imagens por Raça de Cães")
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class DogApiBreedImagesTest {
+public class DogApiBreedImagesTest extends ApiTestHooks {
 
-    private static final Logger logger = LoggerFactory.getLogger(DogApiBreedImagesTest.class);
     private static final String ENDPOINT_BASE = Config.get("endpoint.base");
     private static int EXPECTED_TIMEOUT_MS;
 
-    @BeforeAll
-    public void setUp() {
-        logger.info("Iniciando suite de testes da API de imagens por raça");
+    @Override
+    protected void setupTestSuite() {
         try {
-                EXPECTED_TIMEOUT_MS = FixtureUtils.getIntegerFromFixture("breed-images.json",
-                        "timeout_esperado_ms");
-                logger.info("Fixtures carregadas com sucesso");
-            } catch (IOException e) {
-                logger.error("Erro ao carregar fixtures: {}", e.getMessage());
-                throw new RuntimeException("Falha ao carregar fixtures", e);
-            }
-    }
-
-
-    @BeforeEach
-    public void setUpTest() {
-        logger.debug("Preparando novo teste de raça");
-    }
-
-    @AfterEach
-    public void tearDownTest() {
-        logger.debug("Finalizando teste de raça");
+            EXPECTED_TIMEOUT_MS = FixtureUtils.getIntegerFromFixture("breed-images.json",
+                    "timeout_esperado_ms");
+            logger.info("Fixtures carregadas com sucesso");
+        } catch (IOException e) {
+            logger.error("Erro ao carregar fixtures: {}", e.getMessage());
+            throw new RuntimeException("Falha ao carregar fixtures", e);
+        }
     }
 
     @Nested
