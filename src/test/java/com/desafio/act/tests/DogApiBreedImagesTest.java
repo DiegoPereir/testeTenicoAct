@@ -28,19 +28,16 @@ public class DogApiBreedImagesTest {
     @BeforeAll
     public void setUp() {
         logger.info("Iniciando suite de testes da API de imagens por raça");
-        loadFixtures();
+        try {
+                EXPECTED_TIMEOUT_MS = FixtureUtils.getIntegerFromFixture("breed-images.json",
+                        "timeout_esperado_ms");
+                logger.info("Fixtures carregadas com sucesso");
+            } catch (IOException e) {
+                logger.error("Erro ao carregar fixtures: {}", e.getMessage());
+                throw new RuntimeException("Falha ao carregar fixtures", e);
+            }
     }
 
-    private void loadFixtures() {
-        try {
-            EXPECTED_TIMEOUT_MS = FixtureUtils.getIntegerFromFixture("breed-images.json",
-                    "timeout_esperado_ms");
-            logger.info("Fixtures carregadas com sucesso");
-        } catch (IOException e) {
-            logger.error("Erro ao carregar fixtures: {}", e.getMessage());
-            throw new RuntimeException("Falha ao carregar fixtures", e);
-        }
-    }
 
     @BeforeEach
     public void setUpTest() {
