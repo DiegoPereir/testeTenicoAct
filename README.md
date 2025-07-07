@@ -32,7 +32,7 @@ Este projeto implementa testes automatizados para a [Dog API](https://dog.ceo/do
 
 | Tecnologia | Versão | Propósito |
 |------------|--------|-----------|
-| **Java** | 11+ | Linguagem principal |
+| **Java** | 17+ | Linguagem principal |
 | **JUnit 5** | 5.8+ | Framework de testes |
 | **RestAssured** | 4.5+ | Cliente HTTP para testes de API |
 | **Allure Reports** | 2.20+ | Geração de relatórios |
